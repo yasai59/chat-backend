@@ -25,6 +25,16 @@ const UsuarioSchema = Schema({
         required: true,
         // enum: ['ADMIN_ROLE', 'USER_ROLE']
     },
+    amigos: {
+        type: Array,
+        required: false,
+        default: []
+    },
+    bloqueados: {
+        type: Array,
+        required: false,
+        default: []
+    },
     estado: {
         type: Boolean,
         default: true
@@ -46,5 +56,5 @@ UsuarioSchema.methods.toJSON = function(){
     return usuario;
 }
 
-
+// exportamos el modelo
 module.exports = model('Usuario', UsuarioSchema);

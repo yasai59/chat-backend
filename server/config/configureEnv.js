@@ -1,8 +1,14 @@
 const configurar = () => {
+
+  const devDB = "mongodb://127.0.0.1:27017/chatEpico"; // cambiar por la base de datos de desarrollo
+  const prodDB = "";                                   // cambiar por la base de datos de produccion
+
+  const defaultPort = 3000;
+
   // ============================
   //  Puerto
   // ============================
-  process.env.PORT = process.env.PORT || 3000;
+  process.env.PORT = process.env.PORT || defaultPort;
 
   // ============================
   //  Entorno
@@ -12,8 +18,6 @@ const configurar = () => {
   // ============================
   //  Base de datos
   // ============================
-  const devDB = "mongodb://127.0.0.1:27017/chatEpico"; // cambiar por la base de datos de desarrollo
-  const prodDB = ""; // cambiar por la base de datos de produccion
 
   process.env.MONGODB_CNN = process.env.NODE_ENV === "dev" ? devDB : prodDB;
 
