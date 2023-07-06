@@ -1,6 +1,9 @@
 const { response } = require("express");
+const bcryptjs = require("bcryptjs");
 
-const login = async(req, res = response) => {
+const Usuario = require("../models/User");
+
+const login = async (req, res = response) => {
   const { correo, password } = req.body;
   const usuario = await Usuario.findOne({ correo });
   // comprobamos si el usuario existe
@@ -23,18 +26,21 @@ const login = async(req, res = response) => {
     });
   }
 
+  // generamos el JWT
+  
+
   res.json({
     msg: "login ok",
-  })
-}
+  });
+};
 
 const googleSignIn = (req, res = response) => {
   res.json({
     msg: "google ok",
-  })
-}
+  });
+};
 
 module.exports = {
   login,
-  googleSignIn
-}
+  googleSignIn,
+};
