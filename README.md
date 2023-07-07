@@ -26,13 +26,13 @@ De momento la aplicación se encuentra en un punto de desarrollo muy temprano, p
     - Correo
     - Contraseña
     - en caso exitoso devuelve:
-    - status 200
-    - msg: "login ok"
-    - token jwt
+      - status 200
+      - msg: "login ok"
+      - token jwt
     - objeto usuario para guardar en el frontend
     - en caso de fallo devuelve:
-    - status 400
-    - msg: "Usuario / Password no son correctos"
+      - status 400
+      - msg: "Usuario / Password no son correctos"
 
 ### Cosas por hacer:
 - socket para enviar y recibir mensajes
