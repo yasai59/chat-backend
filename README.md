@@ -18,8 +18,8 @@ De momento la aplicación se encuentra en un punto de desarrollo muy temprano, p
     - Nombre: string (Obligatorio) -> nombre de usuario. De momento no es unico
     - correo: string (Obligatorio) -> correo unico del usuario
     - password: string (Obligatorio) -> contraseña del usuario. Requisitos: 
-    - Minimo 6 caracteres
-    - Minimo 1 Numero y 1 mayúscula
+      - Minimo 6 caracteres
+      - Minimo 1 Numero y 1 mayúscula
     - Imagen -> url para cargar la imagen
 - Iniciar sesion
     - Necesario: 
