@@ -1,5 +1,6 @@
 const { response } = require("express");
 const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const Usuario = require("../models/User");
 
@@ -9,28 +10,30 @@ const login = async (req, res = response) => {
   // comprobamos si el usuario existe
   if (!usuario) {
     return res.status(400).json({
-      msg: "Usuario / Password no son correctos - correo",
+      msg: "Usuario / Password no son correctos",
     });
   }
   // comprobamos si el usuario esta activo
   if (!usuario.estado) {
     return res.status(400).json({
-      msg: "Usuario / Password no son correctos - estado: false",
+      msg: "Usuario / Password no son correctos",
     });
   }
   // comprobamos si la contraseña es correcta
   const validPassword = bcryptjs.compareSync(password, usuario.password);
   if (!validPassword) {
     return res.status(400).json({
-      msg: "Usuario / Password no son correctos - password",
+      msg: "Usuario / Password no son correctos",
     });
   }
 
   // generamos el JWT
-  
+  const token = jwt.sign({correo: usuario.correo}, process.env.SECRET, { expiresIn: '7d' } );
 
   res.json({
     msg: "login ok",
+    token,
+    usuario
   });
 };
 

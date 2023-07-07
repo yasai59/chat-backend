@@ -14,7 +14,9 @@ router.post('/postUser',[
   check('nombre','El nombre es obligatorio').not().isEmpty(),
   check('correo','El correo es obligatorio').isEmail(),
   check('password','La contraseña es obligatoria').not().isEmpty(), 
-  check('correo').custom(emailRepetido),  
+  check('correo').custom(emailRepetido),
+  check('password','La contraseña debe tener al menos 6 caracteres').isLength({min:6}),
+  check('password', 'La contraseña debe tener al menos un numero y una mayuscula').matches(/^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]{6,}$/),  
   validarCampos
 ], usuariosPost)
 

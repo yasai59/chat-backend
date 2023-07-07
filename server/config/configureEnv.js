@@ -21,6 +21,14 @@ const configurar = () => {
 
   process.env.MONGODB_CNN = process.env.NODE_ENV === "dev" ? devDB : prodDB;
 
+  if(!process.env.SECRET || process.env.SECRET === ""){
+    throw new Error("La variable de entorno SECRET es obligatoria 💣")
+  }
+
+  // ============================
+  //  Mostrar mensajes en consola
+  // ============================
+
   if (process.env.VERBOSE === "true") {
     console.log("tu configuracion de entorno es:");
     console.log({
