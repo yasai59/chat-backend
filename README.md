@@ -35,6 +35,8 @@ De momento la aplicación se encuentra en un punto de desarrollo muy temprano, p
     - en caso de fallo devuelve:
       - status 400
       - msg: "Usuario / Password no son correctos"
+  - Notas
+    - el header donde poner el jwt es: auth-token
 
 ### Cosas por hacer:
 - socket para enviar y recibir mensajes
