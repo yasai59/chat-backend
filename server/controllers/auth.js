@@ -28,12 +28,14 @@ const login = async (req, res = response) => {
   }
 
   // generamos el JWT
-  const token = jwt.sign({correo: usuario.correo}, process.env.SECRET, { expiresIn: '7d' } );
+  const token = jwt.sign({ correo: usuario.correo }, process.env.SECRET, {
+    expiresIn: "7d",
+  });
 
   res.json({
     msg: "login ok",
     token,
-    usuario
+    usuario,
   });
 };
 

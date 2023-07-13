@@ -1,6 +1,7 @@
 const { Request, Response } = require("express");
-const  Usuario  = require("../models/User");
+const Usuario = require("../models/User");
 const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const usuariosPost = (req = Request, res = Response) => {
   // recojemos los datos del body
@@ -17,13 +18,18 @@ const usuariosPost = (req = Request, res = Response) => {
   // guardamos el usuario en la base de datos
   usuario.save();
 
+  // generamos el JWT
+  const token = jwt.sign({ correo: usuario.correo }, process.env.SECRET, {
+    expiresIn: "7d",
+  });
+
   // damos una respuesta al frontend
   res.json({
     msg: "postUser ok",
     usuario,
+    token,
   });
 };
-
 
 module.exports = {
   usuariosPost,
