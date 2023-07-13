@@ -15,6 +15,7 @@ De momento la aplicación se encuentra en un punto de desarrollo muy temprano, p
 
 ### Cosas hechas:
 - Creación de usuarios. Parametros:
+    - URL: {host}/user/postUser
     - Nombre: string (Obligatorio) -> nombre de usuario. De momento no es unico
     - correo: string (Obligatorio) -> correo unico del usuario
     - password: string (Obligatorio) -> contraseña del usuario. Requisitos: 
@@ -22,14 +23,15 @@ De momento la aplicación se encuentra en un punto de desarrollo muy temprano, p
       - Minimo 1 Numero y 1 mayúscula
     - Imagen -> url para cargar la imagen
 - Iniciar sesion
+    - URL: {host}/auth/login
     - Necesario: 
-    - Correo
-    - Contraseña
+      - Correo
+      - Contraseña
     - en caso exitoso devuelve:
       - status 200
       - msg: "login ok"
       - token jwt
-    - objeto usuario para guardar en el frontend
+      - objeto usuario para guardar en el frontend
     - en caso de fallo devuelve:
       - status 400
       - msg: "Usuario / Password no son correctos"
@@ -42,7 +44,7 @@ De momento la aplicación se encuentra en un punto de desarrollo muy temprano, p
 - Grupos
 - Request de amigos
 - Aceptar request de amigos
-- Bloquear gente (sinceramente esto no se como estructurarlo)
+- Bloquear gente
   
 ## a tener en cuenta
 
