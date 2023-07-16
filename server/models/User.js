@@ -25,6 +25,11 @@ const UsuarioSchema = Schema({
     default: "USER_ROLE",
     // enum: ['ADMIN_ROLE', 'USER_ROLE']
   },
+  activado: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   amigos: {
     type: Array,
     required: false,

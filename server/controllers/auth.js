@@ -19,6 +19,12 @@ const login = async (req, res = response) => {
       msg: "Usuario / Password no son correctos",
     });
   }
+  // comprobamos si el usuario esta activado
+  if (!usuario.activado) {
+    return res.status(400).json({
+      msg: "El usuario no esta activado",
+    });
+  }
   // comprobamos si la contraseña es correcta
   const validPassword = bcryptjs.compareSync(password, usuario.password);
   if (!validPassword) {

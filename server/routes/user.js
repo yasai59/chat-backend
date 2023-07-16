@@ -4,12 +4,15 @@ const { Router } = require("express");
 const { check } = require("express-validator");
 const { validarCampos } = require("../helpers/verificarCampos");
 const { emailRepetido, usuarioExiste } = require("../database/db-validators");
-
-// functiones de los controllers
-const { usuariosPost } = require("../controllers/user");
 const { verificarJWT } = require("../middlewares/verificarJWT");
 const { verificarAdmin } = require("../middlewares/verificarRoles");
 
+// functiones de los controllers
+const {
+  usuariosPost,
+  usuariosDelete,
+  verificarUsuario,
+} = require("../controllers/user");
 const router = Router();
 
 router.post(
@@ -23,10 +26,9 @@ router.post(
       "password",
       "La contraseña debe tener al menos 6 caracteres"
     ).isLength({ min: 6 }),
-    check(
-      "password",
-      "La contraseña debe tener al menos un numero y una mayuscula"
-    ).matches(/^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]{6,}$/),
+    check("password", "La contraseña debe tener al menos un numero").matches(
+      /\d/
+    ),
     validarCampos,
   ],
   usuariosPost
@@ -44,5 +46,7 @@ router.delete(
   ],
   usuariosDelete
 );
+
+router.get("/verificar/:id", verificarUsuario);
 
 module.exports = router;
